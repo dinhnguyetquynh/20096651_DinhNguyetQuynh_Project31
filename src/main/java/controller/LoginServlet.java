@@ -34,7 +34,7 @@ public class LoginServlet extends HttpServlet {
 				response.sendRedirect("/20096651_DinhNguyetQuynh_Project31/ProductListController");
 				
 			}else {
-				response.sendRedirect("QuanLySanPham.jsp");
+				response.sendRedirect("/20096651_DinhNguyetQuynh_Project31/DSSP");
 			}
 		}else {
 			request.setAttribute("error", "số điện thoại hoặc mật khẩu không dung");

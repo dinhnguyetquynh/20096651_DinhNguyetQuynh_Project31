@@ -2,50 +2,33 @@ package controller;
 
 import java.io.IOException;
 import java.sql.Connection;
+import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 import connectMariaDB.connectDB;
-import dao.ProductDAO;
 import model.Product;
 
 /**
- * Servlet implementation class ProductListController
+ * Servlet implementation class ReloadProductsServlet
  */
-@WebServlet("/ProductListController")
-public class ProductListController extends HttpServlet {
+@WebServlet("/reloadProducts")
+public class ReloadProductsServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
+//    private static final String DB_URL = "jdbc:mariadb://localhost:3306/db_perfume?useUnicode=true&characterEncoding=utf8mb4";
+//    private static final String DB_USER = "username";
+//    private static final String DB_PASSWORD = "password";
 
-//	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-//		HttpSession session = request.getSession();
-//		
-//		List<Product> list = (List<Product>) session.getAttribute("productList");
-//		if(list==null) {
-//			list = ProductDAO.queryProducts();
-//			session.setAttribute("productList", list);
-//		}
-//		
-//		request.setAttribute("ds", list);
-//		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/Trangchu.jsp");
-//		dispatcher.forward(request, response);
-//	}
-//
-//	/**
-//	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-//	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         // Ngăn trình duyệt lưu trữ bộ nhớ cache
         response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate"); // HTTP 1.1
         response.setHeader("Pragma", "no-cache"); // HTTP 1.0
@@ -75,11 +58,6 @@ public class ProductListController extends HttpServlet {
         }
 
         request.setAttribute("ds", products);
-        request.getRequestDispatcher("Trangchu.jsp").forward(request, response);
+        request.getRequestDispatcher("QuanLySanPham.jsp").forward(request, response);
     }
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
-	}
-
 }

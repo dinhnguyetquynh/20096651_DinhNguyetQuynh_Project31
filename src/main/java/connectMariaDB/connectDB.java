@@ -9,7 +9,7 @@ import javax.servlet.jsp.tagext.TryCatchFinally;
 import org.apache.jasper.tagplugins.jstl.core.Catch;
 
 public class connectDB {
-	private static String url ="jdbc:mariadb://localhost:3306/db_perfume";
+	private static String url ="jdbc:mariadb://localhost:3306/db_perfume?useUnicode=true&characterEncoding=utf8mb4";
 	private static String user ="root";
 	private static String password ="root";
 	

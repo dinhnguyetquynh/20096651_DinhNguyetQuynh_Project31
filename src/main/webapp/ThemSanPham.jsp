@@ -121,48 +121,35 @@
 
 .section{
 	width: 78%;
-	height: auto;
+	height: 605px;
 	float: left;
 	display: flex;
 }
-.img_product{
-	margin-top: 60px;
+.tblForm{
+	width: 100%;
+	heigt : 500px;
+	
+	
 }
-.img_product img{
-	width: 400px;
-	height: 400px;
+h2{
+	margin-bottom: 10px;
 }
-.detail_product{
-	margin-top: 50px;
-	margin-left: 30px;
-	width: 600px;
-	height: 600px;
+table{
+		margin-top: 20px;
+}
+table input[type="text"]{
+	width: 100%;
 
 }
-.detail_product h2{
-	margin-bottom: 10px;
-}
-.detail_product p {
-	margin-bottom: 10px;
-	font-size: 18px;
-}
-.detail_product input{
-	margin-bottom: 10px;
-	font-size: 18px;
-}
-.detail_product label{
-	font-size: 18px;
-}
-.gia{
-	color: #DC143C;
-}
-.btn_Add{
-	width:50%;
+.btnAdd {
+	width:20%;
 	background-color: #ffc2d1;
 	border: none;
 	padding:10px;
 	border-radius: 4px;
 	margin-top: 20px;
+	font-size: 20px;
+	font-weight: bold;
 }
 .footer{
 	width: 100%;
@@ -217,38 +204,50 @@
 			
 			<div class="aside">
 				<div class="aside_link">
-					<p><a href="ProductListController">Trang chủ</a>>><a>Trang chi tiết sản phẩm</a></p>
+					<p><a href="Trangchu.jsp">Trang chủ</a>>><a>Trang chi tiết sản phẩm</a></p>
 				</div>
 				
-					<div class="aside_info">
-					<p><b>Thương hiệu :</b> ${product.brandName }</p>
-					<p><b>Loại:</b> ${product.categoryName }</p>
-				</div>
+				
 			</div>
+			
 
 			
 			<div class="section">
-				<div class="img_product">
-					<img alt="khong hien thi duoc" src="${product.imgURL}" >
-				</div>
-				
-				<div class="detail_product">
-				<form action="AddToCartServlet" method="post">
-					<h2>${product.productName}</h2>
-					<p>
-						<b>Mô tả sản phẩm:</b>${product.description}
-					</p>
-					<p > <b>Giá:</b> <b class="gia"><fmt:formatNumber value="${product.price}" type="number"  groupingUsed="true" />đ</b></p>
-					<p><b>Số lượng còn:</b> ${product.stock}</p>
-					<label for="soLuong"><b>Chọn số lượng:</b></label>
-					<input type="text" value ="1" size="3" id="soLuong" name="pd_qty">
-					<input type="hidden" name="pd_id" value="${product.productId }">
-					<input type="hidden" name="pd_unit" value="${product.price}">
-					<br>
-					<input type="submit" value ="Thêm vào giỏ hàng" class="btn_Add">
+				<form action="ThemSanPhamServlet" method="post" class=tblForm>
+						<h2>Thêm sản phẩm mới</h2>
+						<table width="100%" border=1 >
+						<tr>
+							<td>Tên Sản Phẩm</td>
+							<td><input type="text" name="Name" ></td>
+						</tr>
+						<tr>
+							<td>Mô tả Sản Phẩm</td>
+							<td><input type="text" name="Description" size="20"></td>
+							</tr>
+						<tr>
+							<td>Giá</td>
+							<td><input type="text" name="Price" size="20"></td>
+						</tr>
+						<tr>
+							<td>Số lượng</td>
+							<td><input type="text" name="Stock" size="20"></td>
+						</tr>
+						<tr>
+							<td>Link hình ảnh</td>
+							<td><input type="text" name="imgURL" size="20"></td>
+						</tr>
+						<tr>
+							<td>Loại sản phâm</td>
+							<td><input type="text" name="strCate" size="20"></td>
+						</tr>
+						<tr>
+							<td>Thương hiệu</td>
+							<td><input type="text" name="strBrand" size="20"></td>
+						</tr>
+					
+						</table>
+						<input type="submit" value="Thêm" class="btnAdd">
 				</form>
-			
-				</div>
 	
 			</div>
 			

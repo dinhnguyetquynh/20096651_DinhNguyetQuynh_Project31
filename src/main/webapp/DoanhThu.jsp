@@ -121,48 +121,36 @@
 
 .section{
 	width: 78%;
-	height: auto;
+	height: 610px;
 	float: left;
-	display: flex;
-}
-.img_product{
-	margin-top: 60px;
-}
-.img_product img{
-	width: 400px;
-	height: 400px;
-}
-.detail_product{
-	margin-top: 50px;
-	margin-left: 30px;
-	width: 600px;
-	height: 600px;
 
 }
-.detail_product h2{
-	margin-bottom: 10px;
+.tbl_info{
+	margin-left: 0px;
 }
-.detail_product p {
-	margin-bottom: 10px;
-	font-size: 18px;
+.product_img{
+	width: 50px;
+	height: 50px;
 }
-.detail_product input{
-	margin-bottom: 10px;
-	font-size: 18px;
-}
-.detail_product label{
-	font-size: 18px;
-}
-.gia{
-	color: #DC143C;
-}
-.btn_Add{
-	width:50%;
-	background-color: #ffc2d1;
+.btn_order{
+	margin-top: 10px;
+	width:20%;
+	background-color: #FF3469;
+	color: white;
 	border: none;
 	padding:10px;
 	border-radius: 4px;
+	font-size: 18px;
+	
+}
+.table_cart{
+	background-color: #F5F3F3;
+}
+h3{
 	margin-top: 20px;
+}
+.tbl_header{
+	background-color: #ffc2d1;
 }
 .footer{
 	width: 100%;
@@ -187,6 +175,12 @@
 .footer_social img{
 	width: 24px;
 	height: 24px;	
+}
+#doanhthu{
+	color:red;
+	font-size: 20px;
+	font-weight: bold;
+	
 }
 </style>
 </head>
@@ -217,39 +211,26 @@
 			
 			<div class="aside">
 				<div class="aside_link">
-					<p><a href="ProductListController">Trang chủ</a>>><a>Trang chi tiết sản phẩm</a></p>
+					<p><a href="reloadProducts">Trang chủ</a>>><a>Trang chi tiết sản phẩm</a></p>
 				</div>
 				
-					<div class="aside_info">
-					<p><b>Thương hiệu :</b> ${product.brandName }</p>
-					<p><b>Loại:</b> ${product.categoryName }</p>
-				</div>
+				
 			</div>
+			
 
 			
 			<div class="section">
-				<div class="img_product">
-					<img alt="khong hien thi duoc" src="${product.imgURL}" >
+				<h2>Tính doanh thu trong ngày</h2>
+			    <form action="revenue" method="post">
+			        <label for="date">Nhập ngày (yyyy-MM-dd):</label>
+			        <input type="date" id="date" name="date" required>
+			        <input type="submit" value="Tính doanh thu">
+			    </form>
+				<div>
+				<h3>Doanh thu ngày hôm nay là :</h3>
+				<p id="doanhthu"><fmt:formatNumber value="${tong}" type="number"  groupingUsed="true" />VND</p>
+					
 				</div>
-				
-				<div class="detail_product">
-				<form action="AddToCartServlet" method="post">
-					<h2>${product.productName}</h2>
-					<p>
-						<b>Mô tả sản phẩm:</b>${product.description}
-					</p>
-					<p > <b>Giá:</b> <b class="gia"><fmt:formatNumber value="${product.price}" type="number"  groupingUsed="true" />đ</b></p>
-					<p><b>Số lượng còn:</b> ${product.stock}</p>
-					<label for="soLuong"><b>Chọn số lượng:</b></label>
-					<input type="text" value ="1" size="3" id="soLuong" name="pd_qty">
-					<input type="hidden" name="pd_id" value="${product.productId }">
-					<input type="hidden" name="pd_unit" value="${product.price}">
-					<br>
-					<input type="submit" value ="Thêm vào giỏ hàng" class="btn_Add">
-				</form>
-			
-				</div>
-	
 			</div>
 			
 			<div class="footer">

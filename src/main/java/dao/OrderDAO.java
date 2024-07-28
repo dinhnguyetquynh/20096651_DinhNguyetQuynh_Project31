@@ -7,6 +7,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.sql.Timestamp;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
@@ -85,5 +86,31 @@ public class OrderDAO {
 	     return orders;
 		
 	}
+	public static double getTotalRevenueInDay(LocalDate date) throws SQLException {
+        double totalRevenue = 0.0;
+        Connection connection = connectDB.getConnection();
+        
+        // Câu lệnh SQL để tính tổng doanh thu trong ngày chỉ định
+        String sql = "SELECT SUM(TotalAmount) AS TotalRevenue FROM Orders WHERE DATE(OrderDate) = ?";
+        
+        try (PreparedStatement stmt = connection.prepareStatement(sql)) {
+            stmt.setDate(1, Date.valueOf(date));
+            ResultSet rs = stmt.executeQuery();
+            
+            if (rs.next()) {
+                totalRevenue = rs.getDouble("TotalRevenue");
+            }
+            
+            rs.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+            throw new SQLException("Lỗi khi tính doanh thu trong ngày: " + e.getMessage());
+        } finally {
+            connection.close();
+        }
+        
+        return totalRevenue;
+    }
+	
 
 }

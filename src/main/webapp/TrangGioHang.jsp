@@ -21,67 +21,20 @@
 	height: 70px;
 	float: left;
 	background-color: #ffc2d1;
-	display: flex;
+	
     align-items: center;
     padding: 10px;
     justify-content: center;
 
 }
-.header img{
-	width: 24px;
-	height: 24px;
-}
-.dropbtn{
-	cursor: pointer;
 
-}
-.dropdown{
-	position: relative;
-	display: inline-block;
-	margin-left: 80px;
-	
-}
-.dropdown-content {
-  display: none;
-  position: absolute;
-  background-color: #f9f9f9;
-  min-width: 160px;
-  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-  z-index: 1;
-}
-
-.dropdown-content a {
-  color: black;
-  padding: 12px 16px;
-  text-decoration: none;
-  display: block;
-}
-
-.dropdown-content a:hover {background-color: #f1f1f1}
-
-.dropdown:hover .dropdown-content {
-  display: block;
-}
-
-.menu2 ul {
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
-  display: flex; 
-  margin-right: -180px;
-}
-
-.menu2 li {
-  display: inline;
-  margin-left: 20px;
-}
 .YourDream p{
 	font-size: 35px;
 	color: 686262;
 	font-weight: bolder;
 	font-style: oblique;
 	font-family: "Sofia", sans-serif;
-	margin-left: 100px ;
+	margin-left: 45%;
 }
 .aside{
 	width: 20%;
@@ -188,25 +141,13 @@
 <body>
 	<div class="tong">
 			<div class="header">
-				<div class="dropdown">
-					<img alt="khong hien thi duoc" src="icons/menu.png" class="dropbtn">
-					<div class="dropdown-content">
-						<a href="#">Nước hoa nữ</a>
-						<a href="#">Nước hoa nam</a>
-					</div>
-				</div>
+			
 				
 				<div class="YourDream">
 					<p>Your Dream</p>
 				</div>
 				
-				<div class="menu2">
-					<ul>
-						<li><a href="#"><img alt="ko" src="icons/search.png"></a></li>
-						<li><a href="#"><img alt="ko" src="icons/user.png"></a></li>
-						<li><a href="#"><img alt="ko" src="icons/cart.png"></a></li>
-					</ul>
-				</div>
+			
 				
 			</div>
 			

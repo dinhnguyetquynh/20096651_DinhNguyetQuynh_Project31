@@ -171,7 +171,7 @@ public class ProductDAO {
 	            while (rs.next()) {
 	                Product product = new Product();
 	                product.setProductId(rs.getInt("Product_ID"));
-	                product.setBrandName(rs.getString("Name"));
+	                product.setProductName(rs.getString("Name"));
 	                product.setDescription(rs.getString("Description"));
 	                product.setPrice(rs.getFloat("Price"));
 	                product.setStock(rs.getInt("Stock"));
@@ -183,6 +183,99 @@ public class ProductDAO {
 	        }
 
 	        return products;
+	    }
+	 
+	 // Thêm sản phẩm mới
+	    public static boolean addProduct(Product product) {
+	    	String query = "INSERT INTO Products (Name, Description, Price, Stock, imgURL, Category_ID, Brand_ID) VALUES (?, ?, ?, ?, ?, ?, ?)";
+	        try (Connection con = connectDB.getConnection();
+	             PreparedStatement ps = con.prepareStatement(query)) {
+	            
+	            // Kiểm tra Category_ID và Brand_ID tồn tại
+	            if (!checkCategoryIdExists(Integer.parseInt(product.getCategoryName()))) {
+	                System.out.println("Category_ID không tồn tại: " + Integer.parseInt(product.getCategoryName()));
+	                return false;
+	            }
+	            if (!checkBrandIdExists(Integer.parseInt(product.getBrandName()))) {
+	                System.out.println("Brand_ID không tồn tại: " + Integer.parseInt(product.getBrandName()));
+	                return false;
+	            }
+	            
+	            ps.setString(1, product.getProductName());
+	            ps.setString(2, product.getDescription());
+	            ps.setFloat(3, product.getPrice());
+	            ps.setInt(4, product.getStock());
+	            ps.setString(5, product.getImgURL());
+	            ps.setInt(6, Integer.parseInt(product.getCategoryName()));
+	            ps.setInt(7,Integer.parseInt(product.getBrandName()));
+	            
+	            int result = ps.executeUpdate();
+	            return result > 0;
+	        } catch (SQLException e) {
+	            e.printStackTrace();
+	        }
+	        return false;
+	    }
+	 // Kiểm tra sự tồn tại của Category_ID
+	    private static boolean checkCategoryIdExists(int categoryId) {
+	        String query = "SELECT COUNT(*) FROM Categories WHERE Category_ID = ?";
+	        try (Connection con = connectDB.getConnection();
+	             PreparedStatement ps = con.prepareStatement(query)) {
+	            ps.setInt(1, categoryId);
+	            ResultSet rs = ps.executeQuery();
+	            if (rs.next() && rs.getInt(1) > 0) {
+	                return true;
+	            }
+	        } catch (SQLException e) {
+	            e.printStackTrace();
+	        }
+	        return false;
+	    }
+
+	    // Kiểm tra sự tồn tại của Brand_ID
+	    private static boolean checkBrandIdExists(int brandId) {
+	        String query = "SELECT COUNT(*) FROM Brand WHERE Brand_ID = ?";
+	        try (Connection con = connectDB.getConnection();
+	             PreparedStatement ps = con.prepareStatement(query)) {
+	            ps.setInt(1, brandId);
+	            ResultSet rs = ps.executeQuery();
+	            if (rs.next() && rs.getInt(1) > 0) {
+	                return true;
+	            }
+	        } catch (SQLException e) {
+	            e.printStackTrace();
+	        }
+	        return false;
+	    }
+
+	    // Xóa sản phẩm
+	    public static boolean deleteProduct(int productId) {
+	        String query = "DELETE FROM Products WHERE Product_ID = ?";
+	        try (Connection con = connectDB.getConnection();
+	             PreparedStatement ps = con.prepareStatement(query)) {
+	            
+	            ps.setInt(1, productId);
+	            int result = ps.executeUpdate();
+	            return result > 0;
+	        } catch (SQLException e) {
+	            e.printStackTrace();
+	        }
+	        return false;
+	    }
+
+	    // Cập nhật số lượng sản phẩm
+	    public static void updateProductStock(int productId, int newStock) {
+	        String query = "UPDATE Products SET Stock = ? WHERE Product_ID = ?";
+	        try (Connection con = connectDB.getConnection();
+	             PreparedStatement ps = con.prepareStatement(query)) {
+	            
+	            ps.setInt(1, newStock);
+	            ps.setInt(2, productId);
+	            ps.executeUpdate();
+	        } catch (SQLException e) {
+	            e.printStackTrace();
+	        }
+	       
 	    }
 
 }

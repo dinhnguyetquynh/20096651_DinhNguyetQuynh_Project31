@@ -207,10 +207,7 @@ h3{
 				<div class="aside_link">
 					<p><a href="Trangchu.jsp">Trang chủ</a>>><a>Trang chi tiết sản phẩm</a></p>
 				</div>
-				<div class="aside_info">
-					<p><b>Thương hiệu :</b> ${product.brandName }</p>
-					<p><b>Loại:</b> ${product.categoryName }</p>
-				</div>
+				
 				
 			</div>
 			

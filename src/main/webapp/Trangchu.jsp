@@ -15,6 +15,8 @@
 .tong{
 	width: 100%;
 	height: 100%;
+
+	
 }
 .header{
 	width: 100%;
@@ -164,6 +166,9 @@
 	display: flex;
 	flex-wrap: wrap;
     gap: 20px; 
+   	overflow: auto;
+
+ 
 }
 .product{
 	width: 300px;
@@ -264,9 +269,11 @@
 							<div class="dropdown2">
 								<img alt="ko" src="icons/user.png" class="dropbtn2">
 								<div class="dropdown-content2">
+									<a href="/20096651_DinhNguyetQuynh_Project31/CustomerInfoServlet">Tài Khoản</a>
 									<a href="Dangnhap.jsp">Đăng nhập</a>
 									<a href="Dangky.jsp">Đăng ký</a>
-									<a href="/20096651_DinhNguyetQuynh_Project31/CustomerInfoServlet">Tài Khoản</a>
+									<a href="LogoutServlet">Đăng xuất</a>
+									
 								</div>
 							</div>
 							

@@ -1,4 +1,4 @@
- <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <!DOCTYPE html>
@@ -205,12 +205,9 @@ h3{
 			
 			<div class="aside">
 				<div class="aside_link">
-					<p><a href="Trangchu.jsp">Trang chủ</a>>><a>Trang chi tiết sản phẩm</a></p>
+					<p><a href="ProductListController">Trang chủ</a>>><a>Trang chi tiết sản phẩm</a></p>
 				</div>
-				<div class="aside_info">
-					<p><b>Thương hiệu :</b> ${product.brandName }</p>
-					<p><b>Loại:</b> ${product.categoryName }</p>
-				</div>
+			
 				
 			</div>
 			

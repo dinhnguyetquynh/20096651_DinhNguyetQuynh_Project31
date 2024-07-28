@@ -25,12 +25,27 @@ public class Product {
 		this.stock = stock;
 		this.imgURL = imgURL;
 	}
-
+	
+	
 
 
 	public Product(int productId, String productName, String description, float price, int stock, String imgURL,
 			String categoryName, String brandName) {
 		this.productId = productId;
+		this.productName = productName;
+		this.description = description;
+		this.price = price;
+		this.stock = stock;
+		this.imgURL = imgURL;
+		this.categoryName = categoryName;
+		this.brandName = brandName;
+	}
+
+	
+
+	public Product(String productName, String description, float price, int stock, String imgURL, String categoryName,
+			String brandName) {
+	
 		this.productName = productName;
 		this.description = description;
 		this.price = price;
